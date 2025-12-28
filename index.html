@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bradley Heim - Aerospace Engineering & Business Portfolio</title>
+    <style>
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+        
+        /* NAVIGATION BAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover, nav a.active {
+            color: #CFB991;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #3d3d3d 100%);
+            color: white;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(207, 185, 145, 0.1) 0%, rgba(207, 185, 145, 0.05) 100%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .hero-text .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .hero-text .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid white;
+        }
+        
+        .btn-primary {
+            background-color: #CFB991;
+            color: #1a1a1a;
+            border-color: #CFB991;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(207, 185, 145, 0.4);
+            background-color: #D4BE9C;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .hero-image-placeholder {
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px dashed rgba(255,255,255,0.3);
+        }
+        
+        /* ABOUT SECTION */
+        .about {
+            padding: 5rem 2rem;
+            background-color: #f8f9fa;
+        }
+        
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            text-align: center;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .stat-box .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #CFB991;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-box .label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* HIGHLIGHTS SECTION */
+        .highlights {
+            padding: 5rem 2rem;
+            background-color: white;
+        }
+        
+        .highlights-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .highlights h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+            text-align: center;
+        }
+        
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .highlight-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        
+        .highlight-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        .highlight-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .highlight-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #CFB991;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .highlight-card a:hover {
+            text-decoration: underline;
+        }
+        
+        /* FOOTER */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-text .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Bradley Heim</a>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="leadership.html">Leadership</a></li>
+                <li><a href="resume.pdf" target="_blank">Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hi, I'm Bradley Heim</h1>
+                <p class="subtitle">Junior at Purdue University studying Aerospace Engineering & Integrated Business and Engineering</p>
+                <p class="tagline">Passionate about combining technical innovation with strategic business thinking to solve complex challenges in aerospace.</p>
+                <div class="hero-buttons">
+                    <a href="projects.html" class="btn btn-primary">View My Work</a>
+                    <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Replace this div with your actual image -->
+                <div class="hero-image-placeholder">
+                    <p style="color: white; opacity: 0.7;">Your Photo Here<br>(Headshot or Professional Photo)<br>(400x400px)</p>
+                </div>
+                <!-- When you have your photo, use this instead: -->
+                <!-- <img src="images/bradley-headshot.jpg" alt="Bradley Heim"> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about">
+        <div class="about-container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a junior at Purdue University pursuing dual degrees in Aeronautical & Astronautical 
+                        Engineering and Integrated Business and Engineering. With a 3.75 GPA, I'm focused on the 
+                        intersection of technical innovation and business strategy in the aerospace industry.
+                    </p>
+                    <p>
+                        Through study abroad programs in Barcelona and Lisbon, I've developed a global perspective 
+                        on engineering and business challenges. I currently lead the Medical Instrumentation in Space 
+                        project, work with the Purdue Space Program on satellite systems, and serve as Housing Manager 
+                        for my fraternity managing 80 residents.
+                    </p>
+                    <p>
+                        I'm actively seeking Summer 2026 internship opportunities where I can apply my technical 
+                        skills and business acumen to real-world challenges in aerospace and beyond.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <div class="number">6</div>
+                        <div class="label">Technical Projects</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">2</div>
+                        <div class="label">Study Abroad Programs</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">3</div>
+                        <div class="label">Leadership Roles</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">3.75</div>
+                        <div class="label">GPA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HIGHLIGHTS SECTION -->
+    <section class="highlights">
+        <div class="highlights-container">
+            <h2>What I Do</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon">🚀</div>
+                    <h3>Projects</h3>
+                    <p>From aerospace designs to business case competitions, explore my technical and strategic work across 5+ major projects.</p>
+                    <a href="projects.html">View All Projects →</a>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">💼</div>
+                    <h3>Experience</h3>
+                    <p>International study abroad programs, part-time videography work, and hands-on experiences that shaped my perspective.</p>
+                    <a href="experience.html">See My Journey →</a>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">👥</div>
+                    <h3>Leadership</h3>
+                    <p>Leading technical teams and fraternity initiatives, driving impact through collaboration and strategic thinking.</p>
+                    <a href="leadership.html">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Bradley Heim. Built from scratch for authenticity.</p>
+    </footer>
+</body>
+</html>

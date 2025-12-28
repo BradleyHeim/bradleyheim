@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Bradley Heim</title>
+    <style>
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+        
+        /* NAVIGATION BAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover, nav a.active {
+            color: #CFB991;
+        }
+        
+        /* PAGE HEADER */
+        .page-header {
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #3d3d3d 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(207, 185, 145, 0.1) 0%, rgba(207, 185, 145, 0.05) 100%);
+            pointer-events: none;
+        }
+        
+        .page-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* EXPERIENCE SECTION */
+        .experience-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .experience-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 6rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        /* Alternate layout for even items */
+        .experience-item:nth-child(even) .experience-content {
+            order: 2;
+        }
+        
+        .experience-item:nth-child(even) .experience-image {
+            order: 1;
+        }
+        
+        .experience-content {
+            order: 1;
+        }
+        
+        .experience-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background-color: #CFB991;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+        
+        .experience-item h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+        
+        .experience-role {
+            font-size: 1.2rem;
+            color: #CFB991;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-date {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .experience-description {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        .experience-highlights {
+            margin-top: 1.5rem;
+        }
+        
+        .experience-highlights h3 {
+            font-size: 1rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .experience-highlights ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .experience-highlights li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+        
+        .experience-highlights li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #CFB991;
+            font-weight: bold;
+        }
+        
+        .experience-image {
+            order: 2;
+        }
+        
+        .experience-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: #f8f9fa;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #d0d0d0;
+            color: #999;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        /* FOOTER */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 968px) {
+            .experience-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .experience-item:nth-child(even) .experience-content,
+            .experience-item:nth-child(even) .experience-image {
+                order: unset;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .experience-item h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Bradley Heim</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html" class="active">Experience</a></li>
+                <li><a href="leadership.html">Leadership</a></li>
+                <li><a href="resume.pdf" target="_blank">Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1>Experience</h1>
+            <p>Professional work, international programs, and hands-on experiences that have shaped my perspective and skills.</p>
+        </div>
+    </header>
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="experience-section">
+        
+        <!-- VIDEOGRAPHER EXPERIENCE -->
+        <div class="experience-item">
+            <div class="experience-content">
+                <span class="experience-badge">Part-Time Work</span>
+                <h2>Purdue Football Team</h2>
+                <p class="experience-role">Student Video Manager</p>
+                <p class="experience-date">March 2024 - Present</p>
+                <p class="experience-description">
+                    Capture and edit high-quality game footage and practice sessions for the Purdue football 
+                    coaching staff and athletics department. Work under tight deadlines during game days while 
+                    maintaining professional standards. Collaborate with coaches to provide visual analysis 
+                    tools that support team strategy and player development. Balance demanding schedule with 
+                    full-time engineering and business coursework.
+                </p>
+                <div class="experience-highlights">
+                    <h3>Key Responsibilities & Achievements</h3>
+                    <ul>
+                        <li>Film all home games and practice sessions with multiple camera angles for coaching review</li>
+                        <li>Edit and deliver game footage within tight turnaround times for strategic analysis</li>
+                        <li>Manage equipment setup and coordinate with athletics staff on game days</li>
+                        <li>Create highlight reels and content for recruiting and social media purposes</li>
+                        <li>Demonstrate time management by balancing 20+ hour/week commitment with academic excellence</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="experience-image">
+                <div class="image-placeholder">Videography Photo<br>(Stadium, filming, or action shot)<br>(800x600px)</div>
+                <!-- <img src="images/videographer.jpg" alt="Purdue Football Videographer"> -->
+            </div>
+        </div>
+
+        <!-- STUDY ABROAD 1 - BARCELONA -->
+        <div class="experience-item">
+            <div class="experience-content">
+                <span class="experience-badge">Study Abroad</span>
+                <h2>Study Abroad - Barcelona, Spain</h2>
+                <p class="experience-role">Organizational Behavior (OBHR 330)</p>
+                <p class="experience-date">Summer 2025</p>
+                <p class="experience-description">
+                    Completed Organizational Behavior coursework while collaborating directly with the CEO and 
+                    leadership team of Spanish startup Two.Zero to develop and present a comprehensive growth 
+                    strategy supporting their planned expansion into Southeast Asia. Conducted stakeholder interviews 
+                    across five countries and applied organizational behavior concepts to deliver actionable 
+                    recommendations on strategy implementation, gaining firsthand insight into global business 
+                    culture and international expansion challenges.
+                </p>
+                <div class="experience-highlights">
+                    <h3>Key Takeaways & Experiences</h3>
+                    <ul>
+                        <li>Worked directly with startup CEO to develop real-world international expansion strategy</li>
+                        <li>Conducted stakeholder interviews across 5 countries to inform strategic recommendations</li>
+                        <li>Applied organizational behavior frameworks to cross-cultural business challenges</li>
+                        <li>Gained exposure to European startup ecosystem and business practices</li>
+                        <li>Delivered professional presentation to company leadership with actionable insights</li>
+                        <li>Developed cross-cultural communication skills in international business context</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="experience-image">
+                <div class="image-placeholder">Barcelona Study Abroad<br>(Barcelona landmark or you in city)<br>(800x600px)</div>
+                <!-- <img src="images/barcelona.jpg" alt="Barcelona Study Abroad"> -->
+            </div>
+        </div>
+
+        <!-- STUDY ABROAD 2 - LISBON -->
+        <div class="experience-item">
+            <div class="experience-content">
+                <span class="experience-badge">Study Abroad</span>
+                <h2>Study Abroad - Lisbon, Portugal</h2>
+                <p class="experience-role">Management Information Systems & Business Ethics</p>
+                <p class="experience-date">Summer 2024</p>
+                <p class="experience-description">
+                    Completed coursework in Management Information Systems and Business Ethics, applying theoretical 
+                    concepts through hands-on case studies and real-world business scenarios. Engaged in cultural 
+                    immersion experiences throughout Lisbon and Portugal, broadening global business perspectives 
+                    and understanding of European markets. This first international experience laid the foundation 
+                    for developing adaptability and cross-cultural competence that would prove valuable in future 
+                    international work.
+                </p>
+                <div class="experience-highlights">
+                    <h3>Key Takeaways & Experiences</h3>
+                    <ul>
+                        <li>Applied MIS concepts to understand technology's role in international business operations</li>
+                        <li>Explored ethical frameworks in global business contexts through case study analysis</li>
+                        <li>Built foundation for international business understanding and cultural awareness</li>
+                        <li>Developed independence and adaptability living and studying abroad for first time</li>
+                        <li>Gained appreciation for European business culture and management approaches</li>
+                        <li>Connected with international students and faculty, building global network</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="experience-image">
+                <div class="image-placeholder">Lisbon Study Abroad<br>(Lisbon landmark or you in city)<br>(800x600px)</div>
+                <!-- <img src="images/lisbon.jpg" alt="Lisbon Study Abroad"> -->
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Bradley Heim. Built from scratch for authenticity.</p>
+    </footer>
+</body>
+</html>
